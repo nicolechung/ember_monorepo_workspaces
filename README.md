@@ -8,11 +8,17 @@ Must contain:
  "private": true,
  "workspaces": {
     "packages": [
-      "packages/**/*", // for ember addons use star/glob pattern
-      "frontend" // for an ember app link directly, no star (*)
+      "packages/**/*",
+      "frontend" 
     ]
   },
 ```
+
+### packages
+For ember addons use star/glob pattern (`/**/*`). This will tell yarn workspaces to look inside the sub-folders of `packages` and link any node_modules as needed.
+
+### frontend
+This is your app. For this do not use a `*`. This will cause your monorepo to not work, as running `yarn install` from the root will not install `node_modules` into your frontend app.
 ## Dos
 
 ✅ Do add new dependencies to any `package.json`, but then `yarn install` from the root directory.
